@@ -1,0 +1,20 @@
+.hero-copy h1{font-size:50px}
+.catalog-filters{display:grid;grid-template-columns:minmax(180px,1fr) minmax(150px,.65fr) auto;gap:12px;align-items:end;margin:17px 0}
+.catalog-filters label{display:grid;gap:6px;color:var(--ink);font-size:12px;font-weight:800}
+.catalog-filters input,.catalog-filters select{min-width:0;width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}
+.catalog-filters .primary-button{min-height:40px}
+.finance-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 17px}
+.finance-summary>div{display:grid;gap:6px;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:5px}
+.finance-summary small{color:var(--muted);font-size:11px}
+.finance-summary b{font-size:18px}
+.finance-history{margin-top:24px}
+.finance-history h2{font-size:18px}
+.listing-results .empty-state{padding:15px;background:var(--paper);border:1px solid var(--line)}
+.crop-health .health-ring{transform:rotate(36deg)}
+.crop-health .farm-count{transform:none}
+.crop-health .farm-count b,.crop-health .farm-count small{transform:none}
+.module-page .module-message{border-radius:4px}
+.cart-line{display:grid;grid-template-columns:minmax(0,1fr) 34px;gap:8px;align-items:center}
+.cart-line .icon-button{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);cursor:pointer}
+.cart-line .icon-button:disabled{opacity:.55;cursor:wait}
+@media(max-width:600px){.catalog-filters{grid-template-columns:1fr}.catalog-filters .primary-button{width:100%}.finance-summary{grid-template-columns:1fr}.finance-summary>div{grid-template-columns:1fr auto;align-items:center}.hero-copy h1{font-size:38px}}

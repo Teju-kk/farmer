@@ -1,0 +1,26 @@
+import { Router } from 'express';
+import rateLimit from 'express-rate-limit';
+import { authenticate, authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { billSchema } from '../validators/bill.validator.js';
+import { assistantSchema, contactSchema, schemeSchema, schemeUpdateSchema } from '../validators/feature.validator.js';
+import * as controller from '../controllers/features.controller.js';
+
+const router = Router();
+const contactLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: 5, standardHeaders: 'draft-8', legacyHeaders: false, message: { success: false, message: 'Too many support requests. Please try again later.' } });
+const weatherLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: 30, standardHeaders: 'draft-8', legacyHeaders: false, message: { success: false, message: 'Too many weather requests. Please try again later.' } });
+const assistantLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: 20, standardHeaders: 'draft-8', legacyHeaders: false, message: { success: false, message: 'Too many assistant requests. Please try again later.' } });
+router.post('/contact', contactLimiter, validate(contactSchema), controller.contact);
+router.get('/weather', weatherLimiter, authenticate, authorize('FARMER'), controller.weather);
+router.get('/schemes', authenticate, authorize('FARMER'), controller.schemes);
+router.post('/schemes', authenticate, authorize('FARMER'), validate(schemeSchema), controller.createScheme);
+router.patch('/schemes/:id', authenticate, authorize('FARMER'), validate(schemeUpdateSchema), controller.updateScheme);
+router.delete('/schemes/:id', authenticate, authorize('FARMER'), controller.deleteScheme);
+router.get('/notifications', authenticate, controller.notifications);
+router.patch('/notifications/:id/read', authenticate, controller.readNotification);
+router.post('/assistant', assistantLimiter, authenticate, authorize('FARMER'), validate(assistantSchema), controller.assistant);
+router.get('/bills', authenticate, authorize('FARMER'), controller.bills);
+router.post('/bills', authenticate, authorize('FARMER'), validate(billSchema), controller.uploadBill);
+router.get('/bills/:id/file', authenticate, authorize('FARMER'), controller.billFile);
+router.delete('/bills/:id', authenticate, authorize('FARMER'), controller.deleteBill);
+export default router;

@@ -1,0 +1,9 @@
+import { z } from 'zod';
+const optionalText = z.string().trim().min(1).max(200).optional(); const date = z.coerce.date();
+export const farmSchema = z.object({ body: z.object({ name: z.string().trim().min(2).max(100), area: z.coerce.number().positive(), areaUnit: z.string().trim().min(1).max(20), location: optionalText, district: optionalText, state: optionalText, soilType: optionalText, irrigationType: optionalText, latitude: z.coerce.number().min(-90).max(90).optional(), longitude: z.coerce.number().min(-180).max(180).optional() }) });
+export const farmUpdateSchema = z.object({ body: farmSchema.shape.body.partial() });
+export const cropSchema = z.object({ body: z.object({ name: z.string().trim().min(2).max(100), variety: optionalText, farmId: z.string().min(1).max(100), area: z.coerce.number().positive(), sowingDate: date.optional(), expectedHarvestDate: date.optional(), status: z.enum(['PLANNED','SOWN','GROWING','READY_FOR_HARVEST','HARVESTED','SOLD']).optional(), notes: z.string().max(2000).optional() }) });
+export const cropUpdateSchema = z.object({ body: cropSchema.shape.body.omit({ farmId: true }).partial() });
+export const activitySchema = z.object({ body: z.object({ title: z.string().trim().min(2).max(150), description: z.string().max(1000).optional(), dueDate: date, status: z.enum(['PENDING','COMPLETED','SKIPPED']).optional() }) });
+export const incomeSchema = z.object({ body: z.object({ source: z.string().trim().min(2).max(100), amount: z.coerce.number().positive(), date, cropId: z.string().min(1).max(100).optional(), description: z.string().max(1000).optional() }) });
+export const expenseSchema = z.object({ body: z.object({ category: z.string().trim().min(2).max(100), amount: z.coerce.number().positive(), date, cropId: z.string().min(1).max(100).optional(), farmId: z.string().min(1).max(100).optional(), description: z.string().max(1000).optional() }) });

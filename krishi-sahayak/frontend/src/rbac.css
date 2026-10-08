@@ -1,0 +1,85 @@
+.role-main{min-width:0}
+.role-content{padding:24px 0 12px}
+.role-page-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 18px}
+.role-page-heading h1{font-size:27px;line-height:1.2;margin:4px 0 0;color:var(--ink)}
+.role-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.role-metric{min-width:0;display:flex;align-items:center;gap:12px;padding:16px;background:var(--paper);border:1px solid var(--line);border-radius:5px}
+.role-metric>span{width:38px;height:38px;display:grid;place-items:center;flex:none;background:#e7efe3;color:var(--forest);border-radius:5px}
+.role-metric div{min-width:0;display:grid;gap:4px}
+.role-metric small{color:var(--muted);font-size:12px}
+.role-metric strong{font-size:21px;line-height:1.1}
+.role-panel{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:20px;margin:0 0 14px}
+.role-panel h2{font-size:18px;margin:4px 0 0}
+.admin-summary-panel .card-head{align-items:center}
+.admin-summary-panel .card-head a{padding:8px 10px;border:1px solid var(--line);border-radius:5px}
+.activity-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.activity-summary-grid p{display:grid;gap:5px;padding:12px;margin:0;background:#f4f1e8;border-radius:4px}
+.activity-summary-grid b{font-size:21px}
+.activity-summary-grid span,.role-footnote{color:var(--muted);font-size:12px}
+.role-footnote{margin:12px 0 0}
+.role-toolbar{display:flex;align-items:end;gap:12px;margin-bottom:14px}
+.role-search{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;padding:5px 7px;border:1px solid var(--line);border-radius:5px;background:#fff}
+.role-search input{flex:1;min-width:40px;border:0;outline:0;padding:6px 2px;color:var(--ink)}
+.role-search button,.role-pagination button{border:1px solid var(--line);background:#fff;padding:7px 10px;border-radius:4px;color:var(--ink);cursor:pointer}
+.role-filter{display:grid;gap:5px;color:var(--muted);font-size:12px;font-weight:700}
+.role-filter select,.role-row-actions select{min-height:36px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);padding:5px 8px}
+.role-create-form{padding:16px;margin-bottom:16px;border:1px solid #d9e5d6;border-radius:5px;background:#f4f7f0}
+.role-create-form h2{font-size:17px;margin:0 0 5px}
+.role-create-form p{margin:0 0 12px;color:var(--muted);font-size:13px}
+.role-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.role-form-grid label,.role-profile-form label,.role-offer-form label{display:grid;gap:5px;color:var(--ink);font-size:12px;font-weight:750}
+.role-form-grid input,.role-profile-form input,.role-profile-form textarea,.role-offer-form input{min-width:0;width:100%;min-height:39px;padding:9px 10px;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);font:inherit;font-weight:400}
+.role-profile-form textarea{resize:vertical}
+.role-user-list{display:grid}
+.role-user-row{display:grid;grid-template-columns:minmax(120px,1.4fr) minmax(75px,.6fr) minmax(65px,.5fr) auto;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.role-user-identity{min-width:0;display:grid;gap:3px}
+.role-user-identity b,.role-user-identity span,.role-user-identity small{overflow-wrap:anywhere}
+.role-user-identity span,.role-user-identity small{font-size:12px;color:var(--muted)}
+.role-badge,.role-state{display:inline-flex;justify-self:start;align-items:center;width:max-content;max-width:100%;padding:5px 8px;border-radius:4px;background:#eef0e9;color:#485447;font-size:11px;font-weight:750}
+.role-admin{background:#f3ebd7;color:#785d1f}.role-farmer{background:#e6efdf;color:#38673a}.role-marketer{background:#e5edf1;color:#34586b}
+.role-accepted{background:#e4efdf;color:#38673a}.role-rejected{background:#f5e3dd;color:#8d4934}.role-pending{background:#f6edcf;color:#806521}
+.role-state.active{background:#e6efdf;color:#38673a}.role-state.inactive{background:#eee9e3;color:#70685e}
+.role-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
+.text-action{padding:6px 7px;border:0;background:transparent;color:var(--forest);font-size:12px;font-weight:750;cursor:pointer}
+.text-action:disabled{opacity:.45;cursor:not-allowed}
+.role-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;color:var(--muted);font-size:12px}
+.role-pagination>div{display:flex;align-items:center;gap:8px}
+.role-pagination button:disabled{opacity:.45;cursor:not-allowed}
+.role-user-detail{margin-top:14px}
+.detail-counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:14px}
+.detail-counts span{display:flex;justify-content:space-between;gap:8px;padding:10px;background:#f4f1e8;border-radius:4px;font-size:12px}
+.role-message{margin:0 0 14px}
+.market-listings,.role-offer-list{display:grid;gap:12px}
+.market-listing .card-head{gap:12px}
+.listing-facts{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0;color:var(--muted);font-size:12px}
+.listing-facts b{color:var(--ink)}
+.role-offer-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding-top:13px;border-top:1px solid var(--line)}
+.role-offer-form label:nth-child(3){grid-column:1/-1}
+.role-offer-form .primary-button{justify-self:start;min-height:38px}
+.role-profile-form{display:grid;gap:13px;max-width:720px}
+.role-profile-form>p{margin:0;color:var(--muted);font-size:13px}
+.role-profile-form .primary-button{justify-self:start}
+.marketer-home{display:flex;align-items:flex-start;gap:15px}
+.marketer-home>svg{color:var(--forest);flex:none}
+.marketer-home p{color:var(--muted);max-width:580px}
+.compact-button{min-height:36px;padding:8px 12px;font-size:13px}
+.access-denied{min-height:100vh}
+.account-role-note{display:flex;gap:5px;align-items:center;color:var(--muted);font-size:13px}
+.account-role-note b{color:var(--forest)}
+.role-app-shell .sign-out-button{border:1px solid var(--line);border-radius:4px;background:var(--paper);padding:8px 10px;color:var(--ink);cursor:pointer}
+.role-app-shell .sign-out-button:hover,.role-app-shell .sign-out-button:focus-visible{outline:2px solid var(--gold)}
+.role-app-shell .account-link{display:block;margin:0 8px;padding:8px 0;color:#fdf9eb;font-size:13px}
+.role-app-shell .sidebar-foot{padding-bottom:0}
+.role-app-shell .farmer-mini div{min-width:0;overflow-wrap:anywhere}
+.role-app-shell .bottom-nav a{min-width:0;flex:1;overflow:hidden}
+.role-app-shell .bottom-nav span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.offer-response-actions{display:flex;align-items:center;gap:8px;margin-top:5px}
+.admin-access-note{display:flex;align-items:flex-start;gap:9px;margin:0 0 16px;padding:11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:#49594d;font-size:12px;line-height:1.55}
+.admin-access-note svg{flex:none;color:var(--forest);margin-top:1px}
+.admin-login-link{display:inline-flex;align-items:center;min-height:38px;margin-top:8px;color:var(--forest);font-size:13px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.admin-login-link:focus-visible{outline:3px solid #e6b63e;outline-offset:3px;border-radius:2px}
+.admin-login-card .primary-button{margin-top:4px}
+.access-denied .admin-login-link{justify-self:center}
+@media(max-width:900px){.role-user-row{grid-template-columns:minmax(110px,1fr) auto auto}.role-row-actions{grid-column:1/-1;justify-content:flex-start}}
+@media(max-width:700px){.role-content{padding:18px 0}.role-page-heading h1{font-size:23px}.role-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.role-metric{padding:12px;gap:8px}.role-metric>span{width:33px;height:33px}.role-metric strong{font-size:18px}.role-metric small{font-size:11px}.role-panel{padding:15px}.role-toolbar{align-items:stretch;flex-direction:column}.role-search{width:100%}.role-filter{grid-template-columns:1fr auto;align-items:center}.role-form-grid{grid-template-columns:1fr}.role-user-row{grid-template-columns:minmax(0,1fr) auto;gap:8px}.role-user-identity{grid-column:1/-1}.role-user-row>.role-badge{grid-column:1}.role-user-row>.role-state{grid-column:2;grid-row:2}.role-row-actions{grid-column:1/-1;justify-content:flex-start}.role-row-actions select{max-width:140px}.activity-summary-grid{grid-template-columns:1fr}.role-pagination{align-items:flex-start;flex-direction:column}.role-offer-form{grid-template-columns:1fr}.role-offer-form label:nth-child(3){grid-column:auto}.role-offer-form .primary-button{width:100%}.listing-facts{display:grid;grid-template-columns:1fr}.marketer-home{gap:10px}.market-listing .card-head{align-items:flex-start}}
+@media(max-width:380px){.role-metrics{grid-template-columns:1fr}.role-user-row{grid-template-columns:minmax(0,1fr)}.role-user-row>.role-badge,.role-user-row>.role-state{grid-column:1;grid-row:auto}.role-row-actions{gap:4px}.detail-counts{grid-template-columns:1fr}}

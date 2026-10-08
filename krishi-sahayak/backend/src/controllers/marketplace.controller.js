@@ -1,0 +1,18 @@
+import { success } from '../utils/apiResponse.js'; import * as service from '../services/marketplace.service.js';
+export const products = async (req,res,next) => { try { success(res, await service.listProducts(req.query)); } catch(e){next(e);} };
+export const categories = async (req,res,next) => { try { success(res, await service.listCategories()); } catch(e){next(e);} };
+export const getCart = async (req,res,next) => { try { success(res, await service.cart(req.user.sub)); } catch(e){next(e);} };
+export const addCart = async (req,res,next) => { try { success(res, await service.addToCart(req.user.sub,req.validated.body.productId,req.validated.body.quantity)); } catch(e){next(e);} };
+export const removeCartItem = async (req,res,next) => { try { success(res, await service.removeFromCart(req.user.sub, req.params.productId)); } catch(e){next(e);} };
+export const checkout = async (req,res,next) => { try { success(res, await service.checkout(req.user.sub),201); } catch(e){next(e);} };
+export const myListings = async (req,res,next) => { try { success(res, await service.listFarmerListings(req.user.sub)); } catch(e){next(e);} };
+export const createListing = async (req,res,next) => { try { success(res, await service.createFarmerListing(req.user.sub, req.validated.body), 201); } catch(e){next(e);} };
+export const deleteListing = async (req,res,next) => { try { success(res, await service.deleteFarmerListing(req.user.sub, req.params.id)); } catch(e){next(e);} };
+export const marketerSummary = async (req,res,next) => { try { success(res, await service.marketerSummary(req.user.sub)); } catch(e){next(e);} };
+export const marketerProfile = async (req,res,next) => { try { success(res, await service.getMarketerProfile(req.user.sub)); } catch(e){next(e);} };
+export const updateMarketerProfile = async (req,res,next) => { try { success(res, await service.updateMarketerProfile(req.user.sub, req.validated.body)); } catch(e){next(e);} };
+export const marketListings = async (req,res,next) => { try { success(res, await service.marketListings(req.user.sub)); } catch(e){next(e);} };
+export const marketerOffers = async (req,res,next) => { try { success(res, await service.marketerOffers(req.user.sub)); } catch(e){next(e);} };
+export const createOffer = async (req,res,next) => { try { success(res, await service.createOffer(req.user.sub, req.validated.params.listingId, req.validated.body), 201); } catch(e){next(e);} };
+export const farmerOffers = async (req,res,next) => { try { success(res, await service.farmerOffers(req.user.sub)); } catch(e){next(e);} };
+export const respondToOffer = async (req,res,next) => { try { success(res, await service.respondToOffer(req.user.sub, req.validated.params.id, req.validated.body.status)); } catch(e){next(e);} };

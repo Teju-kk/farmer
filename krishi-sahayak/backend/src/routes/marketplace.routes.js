@@ -1,0 +1,15 @@
+import { Router } from 'express'; import { authenticate, authorize } from '../middleware/auth.js'; import { validate } from '../middleware/validate.js'; import { z } from 'zod'; import * as c from '../controllers/marketplace.controller.js';
+const router = Router(); const itemSchema = z.object({ body: z.object({ productId: z.string().min(1).max(100), quantity: z.coerce.number().int().positive().max(50) }) });
+const listingSchema = z.object({ body: z.object({ cropId: z.string().min(1).max(100).optional(), cropName: z.string().trim().min(2).max(100), variety: z.string().trim().max(100).optional(), quantity: z.coerce.number().positive(), unit: z.string().trim().min(1).max(20), expectedPrice: z.coerce.number().positive(), grade: z.string().trim().max(30).optional(), harvestDate: z.coerce.date().optional(), location: z.string().trim().min(2).max(160), description: z.string().max(1000).optional() }) });
+const offerSchema = z.object({ params: z.object({ listingId: z.string().min(1).max(100) }), body: z.object({ quantity: z.coerce.number().positive(), price: z.coerce.number().positive(), message: z.string().trim().max(1000).optional() }).strict() });
+const offerResponseSchema = z.object({ params: z.object({ id: z.string().min(1).max(100) }), body: z.object({ status: z.enum(['ACCEPTED', 'REJECTED']) }).strict() });
+const marketerProfileSchema = z.object({ body: z.object({ organization: z.string().trim().max(120).optional(), marketLocation: z.string().trim().max(160).optional(), businessType: z.string().trim().max(100).optional(), bio: z.string().trim().max(600).optional() }).strict().refine((body) => Object.keys(body).length > 0, 'Provide at least one profile field.') });
+const farmerOnly = [authenticate, authorize('FARMER')];
+const marketerOnly = [authenticate, authorize('MARKETER')];
+router.get('/products', c.products); router.get('/categories', c.categories);
+router.get('/cart', ...farmerOnly, c.getCart); router.post('/cart/items', ...farmerOnly, validate(itemSchema), c.addCart); router.delete('/cart/items/:productId', ...farmerOnly, c.removeCartItem); router.post('/orders/checkout', ...farmerOnly, c.checkout);
+router.get('/listings/mine', ...farmerOnly, c.myListings); router.post('/listings', ...farmerOnly, validate(listingSchema), c.createListing); router.delete('/listings/:id', ...farmerOnly, c.deleteListing);
+router.get('/farmer/offers', ...farmerOnly, c.farmerOffers); router.patch('/farmer/offers/:id', ...farmerOnly, validate(offerResponseSchema), c.respondToOffer);
+router.get('/marketer/summary', ...marketerOnly, c.marketerSummary); router.get('/marketer/profile', ...marketerOnly, c.marketerProfile); router.patch('/marketer/profile', ...marketerOnly, validate(marketerProfileSchema), c.updateMarketerProfile);
+router.get('/marketer/listings', ...marketerOnly, c.marketListings); router.get('/marketer/offers', ...marketerOnly, c.marketerOffers); router.post('/marketer/listings/:listingId/offers', ...marketerOnly, validate(offerSchema), c.createOffer);
+export default router;

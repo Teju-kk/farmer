@@ -1,0 +1,17 @@
+{
+  "name": "krishi-sahayak-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build", "build:production": "node scripts/assert-production-env.js && vite build --mode production", "preview": "vite preview", "lint": "eslint src scripts --ext js,jsx" },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "axios": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "recharts": "latest"
+  },
+  "devDependencies": { "eslint": "latest", "@eslint/js": "latest", "vite": "latest", "tailwindcss": "latest", "@tailwindcss/vite": "latest" }
+}

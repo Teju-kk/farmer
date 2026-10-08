@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const billSchema = z.object({ body: z.object({ filename: z.string().min(1).max(160), contentBase64: z.string().min(1).max(7_000_000), vendor: z.string().trim().max(160).optional(), billDate: z.coerce.date().optional(), category: z.string().trim().max(100).optional(), totalAmount: z.coerce.number().positive().optional(), description: z.string().max(1000).optional() }) });
